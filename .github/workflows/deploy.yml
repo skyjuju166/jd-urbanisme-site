@@ -6,13 +6,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Install lftp
-        run: sudo apt-get install -y lftp
-      - name: FTP Deploy
+      - name: Download and deploy site files
         run: |
+          sudo apt-get install -y lftp
+          mkdir -p site
+
+          # Télécharger les fichiers depuis l'API GitHub
+          curl -s "https://api.github.com/repos/skyjuju166/jd-urbanisme-site/contents/site" \
+            | python3 -c "
+import sys, json, urllib.request, os
+files = json.load(sys.stdin)
+for f in files:
+    if f['type'] == 'file':
+        url = f['download_url']
+        name = f['name']
+        urllib.request.urlretrieve(url, f'site/{name}')
+        print(f'Téléchargé: {name}')
+"
+
+          # Déploiement FTP
           lftp -c "
             set ftp:ssl-allow no;
             open -u wujo2132,${{ secrets.FTP_PASSWORD }} ftp.wujo2132.odns.fr;
-            mirror -R --delete --verbose site/ /public_html/
+            mirror -R --verbose site/ /public_html/
           "
