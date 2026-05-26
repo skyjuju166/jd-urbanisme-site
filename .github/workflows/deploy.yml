@@ -6,27 +6,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Download and deploy site files
+      - name: Deploy site files via FTP
+        env:
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          sudo apt-get install -y lftp
+          sudo apt-get install -y lftp curl jq
           mkdir -p site
-
-          # Télécharger les fichiers depuis l'API GitHub
           curl -s "https://api.github.com/repos/skyjuju166/jd-urbanisme-site/contents/site" \
-            | python3 -c "
-import sys, json, urllib.request, os
-files = json.load(sys.stdin)
-for f in files:
-    if f['type'] == 'file':
-        url = f['download_url']
-        name = f['name']
-        urllib.request.urlretrieve(url, f'site/{name}')
-        print(f'Téléchargé: {name}')
-"
-
-          # Déploiement FTP
-          lftp -c "
-            set ftp:ssl-allow no;
-            open -u wujo2132,${{ secrets.FTP_PASSWORD }} ftp.wujo2132.odns.fr;
-            mirror -R --verbose site/ /public_html/
-          "
+            | jq -r '.[] | select(.type=="file") | .download_url' \
+            | while read url; do
+                fname=$(basename "$url")
+                curl -sL "$url" -o "site/$fname"
+                echo "Downloaded: $fname"
+              done
+          lftp -c "set ftp:ssl-allow no; open -u wujo2132,$FTP_PASSWORD ftp.wujo2132.odns.fr; mirror -R --verbose site/ /public_html/"
