@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualités droit de l'urbanisme — JD Urbanisme</title>
+  <meta name="description" content="Suivez l'actualité du droit de l'urbanisme français : modifications du Code de l'urbanisme, jurisprudences administratives, circulaires ministérielles. Analyses pour élus et praticiens.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://juliendallemagne.fr/actualites.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Actualités droit de l'urbanisme",
+    "description": "Actualités hebdomadaires du droit de l'urbanisme français",
+    "url": "https://juliendallemagne.fr/actualites.html",
+    "publisher": {"@type": "Organization", "name": "JD Urbanisme", "url": "https://juliendallemagne.fr"}
+  }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; font-size: 16px; color: #222; background: #f7f8fa; line-height: 1.6; }
+    a { color: #2a7a7b; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header { background: #1a3a3b; padding: 0 24px; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    .logo span { color: #4B9B9C; }
+    nav a { color: #cde; font-size: 14px; margin-left: 24px; }
+    nav a:hover { color: #fff; text-decoration: none; }
+
+    .page-hero { background: linear-gradient(135deg, #1a3a3b 60%, #2a7a7b 100%); padding: 48px 24px 40px; color: #fff; text-align: center; }
+    .page-hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
+    .page-hero p { font-size: 16px; color: #a8d4d4; max-width: 600px; margin: 0 auto; }
+
+    .main { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+    /* FEATURED */
+    .featured-label { display: inline-block; background: #e6f4f4; color: #2a7a7b; font-size: 12px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 3px; margin-bottom: 20px; border: 1px solid #b8dede; }
+    .featured-card { background: #fff; border-radius: 10px; border: 1px solid #dce8e8; overflow: hidden; display: grid; grid-template-columns: 1fr 340px; margin-bottom: 48px; box-shadow: 0 2px 16px rgba(26,58,59,0.07); }
+    @media (max-width: 768px) { .featured-card { grid-template-columns: 1fr; } }
+    .featured-body { padding: 36px 36px 36px 36px; }
+    .featured-tag { display: inline-block; background: #4B9B9C; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 10px; border-radius: 3px; margin-bottom: 14px; }
+    .featured-body h2 { font-size: 22px; font-weight: 800; color: #1a3a3b; line-height: 1.3; margin-bottom: 12px; }
+    .featured-body .meta { font-size: 13px; color: #888; margin-bottom: 14px; }
+    .featured-body p { font-size: 15px; color: #444; margin-bottom: 18px; }
+    .featured-points { list-style: none; padding: 0; margin-bottom: 22px; }
+    .featured-points li { font-size: 14px; color: #333; padding: 6px 0; border-bottom: 1px solid #f0f5f5; display: flex; align-items: flex-start; gap: 8px; }
+    .featured-points li:last-child { border-bottom: none; }
+    .featured-points li::before { content: '→'; color: #4B9B9C; font-weight: 700; flex-shrink: 0; }
+    .btn { display: inline-block; background: #2a7a7b; color: #fff; padding: 11px 24px; border-radius: 5px; font-size: 14px; font-weight: 600; }
+    .btn:hover { background: #1a5a5b; text-decoration: none; }
+    .featured-aside { background: #f0f8f8; padding: 36px 28px; display: flex; flex-direction: column; justify-content: center; }
+    .featured-aside .aside-label { font-size: 11px; font-weight: 700; color: #4B9B9C; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; }
+    .aside-ref { background: #fff; border-radius: 6px; padding: 12px 14px; margin-bottom: 10px; border: 1px solid #dce8e8; font-size: 13px; color: #333; }
+    .aside-ref strong { display: block; color: #1a3a3b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; }
+
+    /* SECTION TITLE */
+    .section-title { font-size: 14px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; padding-bottom: 10px; border-bottom: 2px solid #e0ecec; }
+
+    /* GRID */
+    .articles-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .card { background: #fff; border-radius: 8px; border: 1px solid #e0ecec; overflow: hidden; transition: box-shadow 0.2s; }
+    .card:hover { box-shadow: 0 4px 20px rgba(26,58,59,0.1); }
+    .card-body { padding: 22px 22px 18px; }
+    .card-tag { display: inline-block; background: #e6f4f4; color: #2a7a7b; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; margin-bottom: 10px; }
+    .card-body h3 { font-size: 16px; font-weight: 700; color: #1a3a3b; line-height: 1.35; margin-bottom: 8px; }
+    .card-body .meta { font-size: 12px; color: #999; margin-bottom: 8px; }
+    .card-body p { font-size: 14px; color: #555; margin-bottom: 14px; }
+    .card-link { font-size: 13px; font-weight: 600; color: #2a7a7b; }
+    .card-link::after { content: ' →'; }
+
+    footer { background: #1a3a3b; color: #aac; padding: 32px 24px; margin-top: 60px; text-align: center; font-size: 13px; }
+    footer a { color: #6bc; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">JD <span>Urbanisme</span></div>
+    <nav>
+      <a href="https://juliendallemagne.fr/">Accueil</a>
+      <a href="https://juliendallemagne.fr/actualites.html">Actualités</a>
+      <a href="https://juliendallemagne.fr/#services">Services</a>
+      <a href="https://juliendallemagne.fr/#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Actualités droit de l'urbanisme</h1>
+  <p>Décrets, lois, jurisprudences administratives — analyses hebdomadaires pour élus territoriaux et agents instructeurs</p>
+</section>
+
+<main class="main">
+
+  <div class="featured-label">✨ Nouveau — 26 mai 2026</div>
+
+  <div class="featured-card">
+    <div class="featured-body">
+      <div class="featured-tag">Documents d'urbanisme</div>
+      <h2>Réforme de la procédure de modification du PLU : ce qui change au 27 mai 2026</h2>
+      <div class="meta">26 mai 2026 &nbsp;·&nbsp; Julien Dallemagne</div>
+      <p>La loi n°2025-1129 du 26 novembre 2025 voit ses principales dispositions entrer en vigueur ce 27 mai 2026. La modification simplifiée du PLU est supprimée : il n'existe plus qu'une seule procédure de modification, soumise à enquête publique.</p>
+      <ul class="featured-points">
+        <li>Suppression de la modification simplifiée (art. L.153-45 à L.153-48 CU abrogés)</li>
+        <li>Procédure de modification unique soumise à enquête publique</li>
+        <li>Nouveau L.104-3 : exonération d'évaluation environnementale pour erreur matérielle ou réduction zone U/AU</li>
+        <li>Procédures engagées avant le 27/05/2026 : régime antérieur applicable jusqu'à leur terme</li>
+      </ul>
+      <a href="https://juliendallemagne.fr/actualite-reforme-modification-plu-loi-2025-1129-2026.html" class="btn">Lire l'article →</a>
+    </div>
+    <div class="featured-aside">
+      <div class="aside-label">Références clés</div>
+      <div class="aside-ref"><strong>Texte</strong>Loi n°2025-1129 du 26 nov. 2025</div>
+      <div class="aside-ref"><strong>Vigueur</strong>27 mai 2026 (art. 26 de la loi)</div>
+      <div class="aside-ref"><strong>Jurisprudence</strong>CE, 31 mars 2026, n°494252</div>
+      <div class="aside-ref"><strong>À venir</strong>Décret 56 mesures — été 2026</div>
+    </div>
+  </div>
+
+  <div class="section-title">Articles précédents</div>
+
+  <div class="articles-grid">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-tag">Documents d'urbanisme</div>
+        <h3>Modification du PLU et loi Huwart : l'essentiel à savoir en 2026</h3>
+        <div class="meta">Mai 2026 &nbsp;·&nbsp; Julien Dallemagne</div>
+        <p>Analyse des nouvelles règles de modification du PLU introduites par la loi Huwart, impacts sur les collectivités et procédures applicables.</p>
+        <a href="https://juliendallemagne.fr/actualite-modification-plu-loi-huwart-2026.html" class="card-link">Lire l'article</a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 JD Urbanisme — <a href="https://juliendallemagne.fr/">juliendallemagne.fr</a> — Droit de l'urbanisme français</p>
+  <p style="margin-top:8px;font-size:12px;color:#7a9a9b;">Les informations publiées sur ce site ont un caractère informatif et ne constituent pas un conseil juridique.</p>
+</footer>
+
+</body>
+</html>
