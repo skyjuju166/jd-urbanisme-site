@@ -8,9 +8,21 @@
   </url>
   <url>
     <loc>https://juliendallemagne.fr/actualites.html</loc>
-    <lastmod>2026-06-08</lastmod>
+    <lastmod>2026-06-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://juliendallemagne.fr/actualite-ce-504464-stationnement-concession-longue-duree-2026.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://juliendallemagne.fr/actualite-pda-abf-ce-512270-avis-divisibilite-permis-2026.html</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://juliendallemagne.fr/actualite-loi-2026-403-derogations-plu-enr-2026.html</loc>
