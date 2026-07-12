@@ -25,52 +25,40 @@ qui vit dans son propre dossier `jeux-scores/`.
 Sur DSM 7.2+, l'application Docker s'appelle **Container Manager**
 (Centre de paquets → installer « Container Manager »).
 
-Deux méthodes : la **A** (dossier monté) est la plus simple et permet de
-mettre à jour l'appli en remplaçant juste le fichier `index.html`.
+Le projet est **prêt à l'emploi** : décompressez le dossier `jeux-scores`
+n'importe où sur le NAS, puis créez le projet. Aucun chemin à modifier.
 
-### Méthode A — Image nginx + dossier monté (recommandée, aucune build)
+### Étapes (interface graphique)
 
-1. **Créez le dossier** sur le NAS avec File Station, par ex.
-   `docker/jeux-scores` (chemin complet : `/volume1/docker/jeux-scores`).
-2. **Copiez-y `index.html`** (ce fichier, depuis ce dossier).
-3. Ouvrez **Container Manager → Projet → Créer**.
-   - Nom du projet : `jeux-scores`
-   - Chemin : sélectionnez le dossier `docker/jeux-scores`
-   - Source : **Créer docker-compose.yml** et collez le contenu du fichier
-     `docker-compose.yml` fourni ici (vérifiez le chemin
-     `/volume1/docker/jeux-scores` et le port `8088`).
-4. Cliquez **Suivant → Terminé**. Container Manager télécharge l'image et
-   démarre le conteneur.
-5. Ouvrez l'application : **`http://IP-DU-NAS:8088`**
+1. Avec **File Station**, déposez le dossier `jeux-scores` dans le partage
+   `docker` (chemin ex. `/volume1/docker/jeux-scores`). Il doit contenir
+   `index.html`, `Dockerfile` et `docker-compose.yml`.
+2. Ouvrez **Container Manager → Projet → Créer**.
+   - **Nom du projet** : `jeux-scores`
+   - **Chemin** : sélectionnez le dossier `docker/jeux-scores`
+   - **Source** : « Utiliser un docker-compose.yml existant »
+     (Container Manager détecte le fichier fourni). Ne modifiez rien.
+3. **Suivant → Terminé**. Container Manager construit l'image puis démarre
+   le conteneur (comptez une minute la première fois).
+4. Ouvrez l'application : **`http://IP-DU-NAS:8088`**
    (remplacez `IP-DU-NAS` par l'adresse de votre NAS, ex. `192.168.1.20`).
 
-> Mise à jour ultérieure : il suffit de remplacer `index.html` dans le
-> dossier, puis de rafraîchir la page dans le navigateur. Pas besoin de
-> reconstruire le conteneur.
-
-### Méthode B — Construire l'image depuis le Dockerfile
-
-Si vous préférez une image autonome (le HTML est embarqué dedans) :
-
-1. Copiez tout ce dossier (`Dockerfile` + `index.html`) sur le NAS, par ex.
-   dans `/volume1/docker/jeux-scores-build`.
-2. **Container Manager → Image → Ajouter → Ajouter depuis un dossier**,
-   sélectionnez ce dossier, nommez l'image `jeux-scores:latest`.
-3. **Container Manager → Conteneur → Créer**, choisissez l'image
-   `jeux-scores:latest`, mappez le port local `8088` vers le port `80` du
-   conteneur, activez le redémarrage automatique, puis démarrez.
-4. Ouvrez **`http://IP-DU-NAS:8088`**.
+> Si le port 8088 est déjà utilisé, changez `"8088:80"` en `"8090:80"`
+> (ou un autre) dans `docker-compose.yml`, puis reconstruisez le projet.
 
 ### En ligne de commande (si SSH est activé)
 
 ```sh
-# Méthode A, équivalent CLI :
-sudo mkdir -p /volume1/docker/jeux-scores
-# (copiez index.html dans ce dossier)
-docker run -d --name jeux-scores --restart unless-stopped -p 8088:80 \
-  -v /volume1/docker/jeux-scores:/usr/share/nginx/html:ro \
-  nginx:alpine
+cd /volume1/docker/jeux-scores
+docker compose up -d      # ou : docker-compose up -d
+# puis ouvrez http://IP-DU-NAS:8088
 ```
+
+### Mettre à jour l'application plus tard
+
+Remplacez `index.html` par la nouvelle version, puis dans Container Manager
+ouvrez le projet et cliquez **Construire** (ou `docker compose up -d --build`
+en SSH).
 
 ### Accès depuis l'extérieur (optionnel)
 
