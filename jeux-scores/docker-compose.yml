@@ -1,0 +1,12 @@
+services:
+  jeux-scores:
+    image: nginx:alpine
+    container_name: jeux-scores
+    restart: unless-stopped
+    ports:
+      # Accès via http://IP-DU-NAS:8088  (changez 8088 si le port est pris)
+      - "8088:80"
+    volumes:
+      # Monte le dossier contenant index.html en lecture seule.
+      # Adaptez le chemin de gauche à l'emplacement réel sur votre NAS.
+      - /volume1/docker/jeux-scores:/usr/share/nginx/html:ro
